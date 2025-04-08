@@ -1,12 +1,13 @@
-// UPDATE_TASK.JS
-
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   const { data_id, start_time, end_time } = req.body;
 
   const response = await fetch("https://api.jiandaoyun.com/api/v5/app/entry/data/update", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.JDY_API_KEY}`,
+      Authorization: process.env.JDY_API_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
