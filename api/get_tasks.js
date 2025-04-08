@@ -1,4 +1,8 @@
 export default async function handler(req, res) {
+  console.log("JDY_APP_ID:", process.env.JDY_APP_ID);
+  console.log("JDY_ENTRY_ID:", process.env.JDY_ENTRY_ID);
+  console.log("JDY_API_KEY:", process.env.JDY_API_KEY?.substring(0, 10)); // 避免泄露全部
+
   const response = await fetch("https://api.jiandaoyun.com/api/v5/app/entry/data/list", {
     method: "POST",
     headers: {
